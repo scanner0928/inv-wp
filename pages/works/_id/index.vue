@@ -12,9 +12,18 @@
 </template>
 
 <script>
+import Meta from "~/assets/mixins/meta";
 export default {
+  mixins: [Meta],
   data() {
     return {
+      meta: {
+        title: "Test-Page!",
+        description: "ページ個別のディスクリプション",
+        type: "article",
+        url: "https://example.com/test",
+        image: "https://example.com/img/ogp/test.jpg"
+      },
       id: this.$route.params.id,
       post: [],
       param: []
@@ -24,7 +33,9 @@ export default {
     const post = await $axios.$get(
       `https://in-visible.net/wp-json/wp/v2/blog/${params.id}`
     );
-    return { post };
+    return {
+      post
+    };
   }
 
   // mounted() {

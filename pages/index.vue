@@ -21,6 +21,12 @@
 
 <script>
 export default {
+  head() {
+    return {
+      titleTemplate: null,
+      title: "TOP | in-visible.net"
+    };
+  },
   async asyncData({ $axios }) {
     const posts = await $axios.$get(
       "https://in-visible.net/wp-json/wp/v2/blog"
@@ -80,9 +86,6 @@ export default {
   .footerMeta {
     text-align: right;
     font-size: 80%;
-
-    .inner {
-    }
 
     time {
       color: #999;

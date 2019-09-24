@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import { getMatchedComponentsInstances, promisify, globalHandleError } from './utils'
 import NuxtLoading from './components/nuxt-loading.vue'
+import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
 import _6f6c098b from '../layouts/default.vue'
 
 const layouts = { "_default": _6f6c098b }
 
 export default {
-  head: {"title":"vue-inv","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"nuxt.js for wordpress site"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
+  head: {"htmlAttrs":{"prefix":"og: http:\u002F\u002Fogp.me\u002Fns#"},"title":"in-visible.net","meta":[{"hid":"description","name":"description","content":"共通のディスクリプション。共通のディスクリプション。"},{"hid":"og:site_name","property":"og:site_name","content":"in-visible.net"},{"hid":"og:type","property":"og:type","content":"article"},{"hid":"og:url","property":"og:url","content":"http:\u002F\u002Fin-visible.net"},{"hid":"og:title","property":"og:title","content":"in-visible.net"},{"hid":"og:description","property":"og:description","content":"共通のディスクリプション。共通のディスクリプション。"},{"hid":"og:image","property":"og:image","content":"\u002Flib\u002Fimg\u002Fogp\u002Fcommon.jpg"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
 
   render(h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })
@@ -38,7 +39,7 @@ export default {
       domProps: {
         id: '__nuxt'
       }
-    }, [loadingEl, transitionEl])
+    }, [loadingEl, h(NuxtBuildIndicator), transitionEl])
   },
   data: () => ({
     isOnline: true,
@@ -133,6 +134,8 @@ export default {
     },
 
     setLayout(layout) {
+      if(layout && typeof layout !== 'string') throw new Error('[nuxt] Avoid using non-string value as layout property.')
+
       if (!layout || !layouts['_' + layout]) {
         layout = 'default'
       }
