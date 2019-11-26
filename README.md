@@ -1,5 +1,9 @@
 # vue-inv
 
+assets/sass/ventors
+assets/font
+を上書きした。
+
 > nuxt.js for wordpress site
 
 ## Build Setup

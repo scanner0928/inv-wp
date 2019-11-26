@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+//@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
 @mixin viewsiteMaxWidth {
   margin: auto;
   max-width: $maxWindow-Pc;
@@ -150,6 +150,33 @@
       &:not(:first-child) {
         margin-top: 1em;
       }
+    }
+  }
+}
+@mixin marginVertical($top:false,$bottom:true,$ratio:.75) {
+  @content;
+  @include MQ(lower-tablet) {
+    @if $top {
+      margin-top: $padTablet-v*$ratio;
+    }
+    @if $bottom {
+      margin-bottom: $padTablet-v*$ratio;
+    }
+  }
+  @include MQ(sp-only) {
+    @if $top {
+      margin-top: $padSp-v*$ratio;
+    }
+    @if $bottom {
+      margin-bottom: $padSp-v*$ratio;
+    }
+  }
+  @include MQ(laptop) {
+    @if $top {
+      margin-top: $padPc-v*$ratio;
+    }
+    @if $bottom {
+      margin-bottom: $padPc-v*$ratio;
     }
   }
 }
@@ -336,7 +363,7 @@
     span {
       display: block;
       background: #fafafa;
-      width: 50%;
+      width: 40%;
       height: 2px;
       position: absolute;
       top: 50%;
@@ -369,11 +396,11 @@
     }
 
     &.active {
-      background-color: #DDDDDD;
-
-      span {
-        background-color: #111;
-      }
+      // background-color: #DDDDDD;
+      //
+      // span {
+      //   background-color: #111;
+      // }
     }
 
     &.active span:first-child {

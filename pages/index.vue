@@ -1,22 +1,24 @@
 <template>
-  <section class="contentArea" id="blog">
-    <div class="tile-row">
-      <article class="blogListCard tile-cell" v-for="post in posts" :key="post.id">
-        <header>
-          <h1 class="tileTitle">{{post.title.rendered}}</h1>
-          <p class="excerpt">{{ post.excerpt.rendered }}</p>
-        </header>
-        <div class="blogListLink">
-          <nuxt-link :to="`/works/${post.id}`" class="card-footer-item">Read More</nuxt-link>
-        </div>
-        <footer class="footerMeta">
-          <div class="inner">
-            <time>{{post.date}}</time>
+  <div>
+    <section class="contentArea" id="blog">
+      <div class="tile-row">
+        <article class="blogListCard tile-cell" v-for="post in posts" :key="post.id">
+          <header>
+            <h1 class="tileTitle">{{post.title.rendered}}</h1>
+            <p class="excerpt">{{ post.excerpt.rendered }}</p>
+          </header>
+          <div class="blogListLink">
+            <nuxt-link :to="`/works/${post.id}`" class="card-footer-item">Read More</nuxt-link>
           </div>
-        </footer>
-      </article>
-    </div>
-  </section>
+          <footer class="footerMeta">
+            <div class="inner">
+              <time>{{post.date}}</time>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
